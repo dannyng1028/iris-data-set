@@ -21,7 +21,6 @@ import sklearn
 print('sklearn: {}'.format(sklearn.__version__))
 
 # Load libraries
-import pandas
 from pandas.plotting import scatter_matrix
 import matplotlib.pyplot as plt
 from sklearn import model_selection
