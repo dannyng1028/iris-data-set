@@ -104,7 +104,7 @@ print('\n')
 # Make predictions on validation data set with all models
 for name, model in models:
 	model.fit(X_train, Y_train)
-	predictions=m.predict(X_validation)
+	predictions=model.predict(X_validation)
 	print('Accuracy score for {}:'.format(name), accuracy_score(Y_validation, predictions))
 	print('Confusion matrix for {}:\n'.format(name), confusion_matrix(Y_validation, predictions))
 	print(classification_report(Y_validation, predictions))
