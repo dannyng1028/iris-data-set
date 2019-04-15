@@ -110,7 +110,7 @@ for name, model in models:
 	print(classification_report(Y_validation, predictions))
 	
   	# Look for misclassified entries
-	if accuracy_score(Y_validation, predictions) <1:
+	if accuracy_score(Y_validation, predictions) < 1:
 		print('Misclasifications:\n')
 	for sl, y, p in zip(X_validation, Y_validation, predictions):
   		if y!=p:
