@@ -114,6 +114,6 @@ for name, model in models:
 	if accuracy_score(Y_validation, predictions) < 1:
 		print('Misclasifications:\n')
 	for sl, y, p in zip(X_validation, Y_validation, predictions):
-  		if y!=p:
+		if y!=p:
     			print(sl, y, p)
 	print('\n')
