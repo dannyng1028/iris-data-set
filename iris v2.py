@@ -99,6 +99,7 @@ ax = fig.add_subplot(111)
 plt.boxplot(results)
 ax.set_xticklabels(names)
 plt.show()
+print('\n')
 
 # Make predictions on validation data set with all models
 for name, model in models:
