@@ -107,7 +107,7 @@ for name, model in models:
 	m.fit(X_train, Y_train)
 	predictions=m.predict(X_validation)
 	print('Accuracy score for {}:'.format(name), accuracy_score(Y_validation, predictions))
-	print('Confusion matrix for {}:\n', confusion_matrix(Y_validation, predictions))
+	print('Confusion matrix for {}:\n'.format(name), confusion_matrix(Y_validation, predictions))
 	print(classification_report(Y_validation, predictions))
 	
 	# Look for misclassified entries
