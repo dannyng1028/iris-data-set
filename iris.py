@@ -70,6 +70,8 @@ Y = array[:,4]
 validation_size = 0.20
 seed = 0
 X_train, X_validation, Y_train, Y_validation = model_selection.train_test_split(X, Y, test_size=validation_size, random_state=seed)
+nsplits = 10
+scoring = 'accuracy'
 
 # Spot Check Algorithms
 models = []
@@ -105,3 +107,24 @@ predictions = knn.predict(X_validation)
 print('Accuracy score:', accuracy_score(Y_validation, predictions))
 print('Confusion matrix:\n', confusion_matrix(Y_validation, predictions))
 print(classification_report(Y_validation, predictions))
+
+# Look for misclassified entries
+for sl, y, p in zip(X_validation, Y_validation, predictions):
+  if y!=p:
+    print(sl, y, p)
+print('\n')
+
+# Make predictions on validation data set with all models
+for name, model in models:
+	m=model
+	m.fit=(X_train, Y_train)
+	predictions=m.predict(X_validation)
+	print('Accuracy score for :'.fomat(name), accuracy_score(Y_validation, predictions))
+	print('Confusion matrix for KNN:\n', confusion_matrix(Y_validation, predictions))
+	print(classification_report(Y_validation, predictions))
+	
+	# Look for misclassified entries
+	for sl, y, p in zip(X_validation, Y_validation, predictions):
+  		if y!=p:
+    			print(sl, y, p)
+	print('\n')
