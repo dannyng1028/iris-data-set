@@ -106,3 +106,22 @@ predictions2 = knn2.predict(X_validation2)
 print('Accuracy score:', accuracy_score(Y_validation2, predictions2))
 print('Confusion matrix:\n', confusion_matrix(Y_validation2, predictions2))
 print(classification_report(Y_validation2, predictions2))
+
+# Look for misclassified entries
+for sl, y, p in zip(X_validation2, Y_validation2, predictions2):
+  if y!=p:
+    print(sl, y, p)
+print('\n')
+
+# Predict with logistic regression
+LR2=LogisticRegression(solver='liblinear', multi_class='ovr')
+LR2.fit(X_train2,Y_train2)
+predictions3 = LR2.predict(X_validation2)
+print('Accuracy score for LR:', accuracy_score(Y_validation2,predictions3))
+print('Confusion matrix for LR:\n', confusion_matrix(Y_validation2, predictions3))
+print(classification_report(Y_validation2, predictions3))
+
+# Look for misclassified entries
+for sl, y, p in zip(X_validation2, Y_validation2, predictions3):
+  if y!=p:
+    print(sl, y, p)
