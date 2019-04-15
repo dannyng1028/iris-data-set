@@ -100,20 +100,6 @@ plt.boxplot(results)
 ax.set_xticklabels(names)
 plt.show()
 
-# Make predictions with k-nearest neighbors on validation dataset
-knn = KNeighborsClassifier()
-knn.fit(X_train, Y_train)
-predictions = knn.predict(X_validation)
-print('Accuracy score for KNN:', accuracy_score(Y_validation, predictions))
-print('Confusion matrix for KNN:\n', confusion_matrix(Y_validation, predictions))
-print(classification_report(Y_validation, predictions))
-
-# Look for misclassified entries
-for sl, y, p in zip(X_validation, Y_validation, predictions):
-	if y!=p:
-		print(sl, y, p)
-print('\n')
-
 # Make predictions on validation data set with all models
 for name, model in models:
 	m=model
@@ -123,7 +109,9 @@ for name, model in models:
 	print('Confusion matrix for {}:\n'.format(name), confusion_matrix(Y_validation, predictions))
 	print(classification_report(Y_validation, predictions))
 	
-	# Look for misclassified entries
+  	# Look for misclassified entries
+	if accuracy_score(Y_validation, predictions) <1:
+		print('Misclasifications:\n')
 	for sl, y, p in zip(X_validation, Y_validation, predictions):
   		if y!=p:
     			print(sl, y, p)
